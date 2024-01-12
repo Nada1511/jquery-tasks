@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    body{
+        background-color: bisque;
+       
+    }
+    #imageContainer {
+      max-width: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    #imageSlider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slider-image {
+      width: 100%;
+    }
+    
+
+   #stopButton{
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-items: center;
+    }
+
+    #stopButton:hover {
+      background-color: #2980b9;
+    }
+    h1{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <h1> Task one </h1>
+
+<div id="imageContainer">
+  <div id="imageSlider">
+    <img class="slider-image" src="d.jpg" alt="Image 1">
+    <img class="slider-image" src="img2.jpg" alt="Image 2">
+    <img class="slider-image" src="img3.jpg" alt="Image 3">
+    <!-- Add more images as needed -->
+  </div>
+</div>
+
+<button id="stopButton">Stop</button>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var slider = $('#imageSlider');
+    var stopButton = $('#stopButton');
+    var interval;
+
+    function startSlider() {
+      interval = setInterval(function () {
+        slider.animate({marginLeft: '-=400px'}, 500, function () {
+          $(this).append($('img:first', this));
+          $(this).css('margin-left', '0');
+        });
+      }, 1000);
+    }
+
+    function stopSlider() {
+      clearInterval(interval);
+    }
+
+    startSlider();
+
+    stopButton.click(function () {
+      stopSlider();
+    });
+  });
+</script>
+
+</body>
+</html>

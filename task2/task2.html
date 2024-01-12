@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Explanation</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .image-container {
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 200px;
+      cursor: pointer;
+    }
+
+    .explanation {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+    
+  </style>
+</head>
+<body>
+ 
+
+<div class="image-container">
+  <img src="hope'.jpg" alt="Image 1" class="image" data-explanation="You only fail when you stop trying">
+  <div class="explanation">You only fail when you stop trying</div>
+
+  <img src="success.jpg" alt="Image 2" class="image" data-explanation="Failure is the first step foeward success">
+  <div class="explanation">Failure is the first step foeward success</div>
+
+  <img src="action.jpg" alt="Image 3" class="image" data-explanation="you must take risk to success">
+  <div class="explanation">you must take risk to success</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.image').click(function () {
+      var explanation = $(this).data('explanation');
+      $(this).next('.explanation').text(explanation).slideDown();
+    });
+  });
+</script>
+
+</body>
+</html>
